@@ -50,10 +50,6 @@ class SetupTest extends TestCase {
 
 	protected function setUp(): void {
 		parent::setUp();
-		$logMock = $this->createMock(ILogger::class);
-		$userSessionMock = $this->getMockBuilder(IUserSession::class)
-			->disableOriginalConstructor()
-			->getMock();
 		$this->cryptMock = $this->getMockBuilder(Crypt::class)
 			->disableOriginalConstructor()
 			->getMock();
@@ -62,10 +58,7 @@ class SetupTest extends TestCase {
 			->disableOriginalConstructor()
 			->getMock();
 
-		/** @var \OCP\ILogger $logMock */
-		/** @var \OCP\IUserSession $userSessionMock */
-		$this->instance = new Setup($logMock,
-			$userSessionMock,
+		$this->instance = new Setup(
 			$this->cryptMock,
 			$this->keyManagerMock);
 	}
